@@ -684,6 +684,52 @@ footer p {
   color: hsl(var(--foreground));
 }
 
+.star-rating {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.star {
+  background: none;
+  border: none;
+  color: hsl(var(--muted-foreground) / 0.3);
+  font-size: 1.75rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.star:hover,
+.star.hover {
+  color: hsl(var(--primary));
+  transform: scale(1.15);
+}
+
+.star.active {
+  color: hsl(var(--primary));
+}
+
+.star:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+textarea.form-group input {
+  font-family: inherit;
+}
+
+.review-prompt {
+  margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+  .header-cta {
+    display: none;
+  }
+
 .auth-page {
   min-height: 100vh;
   display: flex;

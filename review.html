@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write a Review — 24 Hours Used Properly</title>
+  <meta name="description" content="Share your experience with 24 Hours Used Properly — the no-fluff time management guide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">24 HOURS<span> USED PROPERLY</span></a>
+      <a href="index.html" class="cta-btn-primary header-cta">Back to Home →</a>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-card fade-in" style="max-width: 32rem;">
+      <h1>Write a Review</h1>
+      <p class="auth-subtitle">Share your experience — it takes 30 seconds and helps others decide.</p>
+
+      <form id="review-form" action="https://formspree.io/f/mnqewwqo" method="POST">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+          <p class="error-text">Please enter your name</p>
+        </div>
+
+        <div class="form-group">
+          <label>Your Role</label>
+          <input type="text" name="role" placeholder="e.g. Freelancer, Student, Entrepreneur">
+        </div>
+
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="star-rating" id="star-rating">
+            <button type="button" class="star" data-value="1">★</button>
+            <button type="button" class="star" data-value="2">★</button>
+            <button type="button" class="star" data-value="3">★</button>
+            <button type="button" class="star" data-value="4">★</button>
+            <button type="button" class="star" data-value="5">★</button>
+          </div>
+          <input type="hidden" name="rating" id="rating-value" value="">
+          <p class="error-text" id="rating-error">Please select a rating</p>
+        </div>
+
+        <div class="form-group">
+          <label>Your Review</label>
+          <textarea name="review" rows="5" placeholder="What did you like most? How has it helped you?" required style="width: 100%; padding: 0.75rem 1rem; font-family: var(--font-body); font-size: 0.9rem; color: hsl(var(--foreground)); background: transparent; border: 1px solid hsl(var(--input)); outline: none; resize: vertical; transition: border-color 0.3s ease, box-shadow 0.3s ease;"></textarea>
+          <p class="error-text">Please write a review</p>
+        </div>
+
+        <button type="submit" class="cta-btn-primary" style="width: 100%;">Submit Review</button>
+      </form>
+
+      <p class="form-footer" style="margin-top: 1rem;">
+        <a href="thank-you.html">Back to Thank You page</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 24 Hours Used Properly. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var stars = document.querySelectorAll('.star');
+      var ratingInput = document.getElementById('rating-value');
+      var ratingError = document.getElementById('rating-error');
+      var form = document.getElementById('review-form');
+
+      stars.forEach(function (star) {
+        star.addEventListener('click', function () {
+          var value = this.getAttribute('data-value');
+          ratingInput.value = value;
+          ratingError.style.display = 'none';
+          stars.forEach(function (s) {
+            s.classList.toggle('active', parseInt(s.getAttribute('data-value')) <= parseInt(value));
+          });
+        });
+
+        star.addEventListener('mouseenter', function () {
+          var value = parseInt(this.getAttribute('data-value'));
+          stars.forEach(function (s) {
+            s.classList.toggle('hover', parseInt(s.getAttribute('data-value')) <= value);
+          });
+        });
+
+        star.addEventListener('mouseleave', function () {
+          stars.forEach(function (s) {
+            s.classList.remove('hover');
+          });
+        });
+      });
+
+      form.addEventListener('submit', function (e) {
+        if (!ratingInput.value) {
+          e.preventDefault();
+          ratingError.style.display = 'block';
+          return;
+        }
+      });
+
+      var textarea = document.querySelector('textarea');
+      if (textarea) {
+        textarea.addEventListener('focus', function () {
+          this.style.borderColor = 'hsl(38 45% 56%)';
+          this.style.boxShadow = '0 0 0 1px hsl(38 45% 56%)';
+        });
+        textarea.addEventListener('blur', function () {
+          this.style.borderColor = '';
+          this.style.boxShadow = '';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
