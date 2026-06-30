@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Visionary Hub</title>
+  <meta name="description" content="Create an account on Visionary Hub and get instant access to your purchased e-books.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Visionary<span>Hub</span></a>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">☰</button>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-card fade-in">
+      <h1>Create Account</h1>
+      <p class="auth-subtitle">Join Visionary Hub today</p>
+      <form id="register-form" novalidate>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="John Doe" required>
+          <p class="error-text">Please enter your name</p>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+          <p class="error-text">Please enter a valid email address</p>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="At least 6 characters" required minlength="6">
+          <p class="error-text">Password must be at least 6 characters</p>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" placeholder="Repeat your password" required>
+          <p class="error-text">Passwords do not match</p>
+        </div>
+        <button type="submit" class="cta-btn-primary" style="width: 100%;">Create Account</button>
+      </form>
+      <hr class="form-divider">
+      <p class="form-footer">
+        Already have an account? <a href="login.html">Sign in</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
