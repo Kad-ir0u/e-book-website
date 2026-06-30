@@ -132,8 +132,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  var paypalContainer = document.getElementById('paypal-button-container');
-  if (paypalContainer && typeof paypal !== 'undefined') {
+  function initPayPalButton() {
+    var container = document.getElementById('paypal-button-container');
+    if (!container) return;
+    if (typeof paypal === 'undefined') {
+      setTimeout(initPayPalButton, 500);
+      return;
+    }
     paypal.Buttons({
       createOrder: function (data, actions) {
         return actions.order.create({
@@ -154,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }).render('#paypal-button-container');
   }
+  initPayPalButton();
 
   function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
