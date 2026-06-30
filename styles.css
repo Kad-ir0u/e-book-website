@@ -173,6 +173,13 @@ header {
   height: 4rem;
 }
 
+.header-cta {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
 .logo {
   font-family: var(--font-heading);
   font-size: 1.25rem;
@@ -889,6 +896,10 @@ footer p {
 
   .mobile-toggle {
     display: block;
+  }
+
+  .header-cta {
+    display: none;
   }
 
   .hero-grid {
