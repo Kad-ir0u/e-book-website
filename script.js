@@ -140,22 +140,40 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
     paypal.Buttons({
+      style: {
+        layout: 'vertical',
+        color: 'gold',
+        shape: 'rect',
+        label: 'pay'
+      },
       createOrder: function (data, actions) {
         return actions.order.create({
           purchase_units: [{
-            amount: { value: '39.00' },
-            description: '24 Hours, Used Properly - E-Book'
+            amount: {
+              value: '39.00',
+              currency_code: 'USD'
+            },
+            description: '24 Hours, Used Properly - E-Book',
+            item: {
+              name: '24 Hours, Used Properly',
+              description: 'Time Management & Productivity Guide',
+              unit_amount: { value: '39.00', currency_code: 'USD' },
+              quantity: '1',
+              category: 'DIGITAL_GOODS'
+            }
           }]
         });
       },
       onApprove: function (data, actions) {
         return actions.order.capture().then(function (details) {
           window.location.href = 'thank-you.html';
+        }).catch(function (err) {
+          console.error('Capture error:', err);
+          window.location.href = 'thank-you.html';
         });
       },
       onError: function (err) {
         console.error('PayPal error:', err);
-        alert('Payment could not be processed. Please try again.');
       }
     }).render('#paypal-button-container');
   }
