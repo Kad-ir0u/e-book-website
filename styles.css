@@ -257,7 +257,54 @@ nav a.active {
 }
 
 .hero h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+}
+
+.hero-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.comparison-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.75rem;
+}
+
+.comparison-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comparison-list li {
+  font-size: 0.85rem;
+  color: hsl(var(--muted-foreground));
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+}
+
+.comparison-list--bad .x-mark {
+  color: hsl(0 50% 50%);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.comparison-list--good .check-mark {
+  color: hsl(var(--primary));
+  font-weight: 700;
+  font-size: 0.75rem;
 }
 
 .hero-subtitle {
@@ -857,6 +904,11 @@ footer p {
 
   .hero-cta {
     justify-content: center;
+  }
+
+  .hero-comparison {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .hero-cover img {
